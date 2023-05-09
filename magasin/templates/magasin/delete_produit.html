@@ -1,0 +1,25 @@
+{% extends 'magasin/base.html' %}
+
+{% block title %}Supprimer Produit{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">
+          <h2 class="text-center">Supprimer Produit</h2>
+        </div>
+        <div class="card-body">
+          <form method="POST">
+            {% csrf_token %}
+            <p>Êtes-vous sûr de vouloir supprimer le produit "{{ product.libellé }}"?</p>
+            <button type="submit" class="btn btn-danger">Supprimer</button>
+            <a href="{% url 'Catalogue' %}" class="btn btn-primary">Annuler</a>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

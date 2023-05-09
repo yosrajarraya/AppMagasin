@@ -1,0 +1,79 @@
+{% extends 'magasin/base.html' %}
+
+{% block title %} Fournisseurs {% endblock %}
+
+{% block styles %}
+<style>
+    body{
+        background-color:#F0B27A;
+    }
+  .card {
+    margin-bottom: 20px;
+  }
+
+  .card-header {
+    background-color: #f8f9fa;
+  }
+
+  .card-footer {
+    background-color: #f8f9fa;
+  }
+
+  .card-footer .btn-primary {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+
+  .card-footer .btn-primary:hover {
+    color: #fff;
+    background-color: #0069d9;
+    border-color: #0062cc;
+  }
+
+  .card-footer .btn-danger {
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+  }
+
+  .card-footer .btn-danger:hover {
+    color: #fff;
+    background-color: #c82333;
+    border-color: #bd2130;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="text-center mb-4">Liste des fournisseurs</h1>
+      <div class="card custom-card">
+        {% for fournisseur in fournisseurs %}
+        <div class="card">
+          <div class="card-header">
+            <h5 class="card-title">{{ fournisseur.nom }}</h5>
+          </div>
+          <div class="card-body">
+            <p class="card-text"><strong>Adresse:</strong> {{ fournisseur.adresse }}</p>
+            <p class="card-text"><strong>Email:</strong> {{ fournisseur.email }}</p>
+            <p class="card-text"><strong>Tel:</strong> {{ fournisseur.telephone }}</p>
+          </div>
+          <div class="card-footer">
+            <div class="d-flex justify-content-between align-items-center">
+              <a href="{% url 'update_fournisseur' fournisseur.id %}" class="btn btn-primary">Modifier</a>
+              <form action="{% url 'delete_fournisseur' fournisseur.id %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer {{ fournisseur.nom }}?')">Supprimer</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

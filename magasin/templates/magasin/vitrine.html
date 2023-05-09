@@ -1,0 +1,20 @@
+{% extends 'magasin/base.html' %}
+
+{% block content %}
+<form method='POST' class="post-form" >
+{% csrf_token %}
+<div class="container" style="padding-top: 10px; ">
+<div style="overflow:scroll; border:#000000 1px solid;padding: 10px;">
+<table style="width: 1400px; ">
+<tr >
+{% for product in list %}
+<td style="padding: 25px;">
+    <img src="/media/{{product.img}}" style="width: 100px; height: 150px;">
+ <figcaption class="figure-caption"> {{product.libellé}} </figcaption>
+</p> <p> {{product.prix}} DT. </p>
+ </td> {% endfor %} 
+</tr> 
+</table>
+</div>
+ </form> 
+</div> {% endblock %}

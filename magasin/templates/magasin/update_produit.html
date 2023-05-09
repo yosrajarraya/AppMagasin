@@ -1,0 +1,71 @@
+{% extends 'magasin/base.html' %}
+{% block content %}
+{% block styles %}
+<style>
+    body{
+        background-color:#F0B27A;
+    }
+    button[type="submit"] {
+        background-color: rgb(211, 84, 0);
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+</style>
+{% endblock %}
+
+<div class="container-fluid mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="text-center">Modifier Produit</h2>
+                </div>
+                <div class="card-body">
+                    <form encrypte method='POST' class="post-form">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="id_catégorie">Catégorie:</label>
+                            {{ form.catégorie }}
+                        </div>
+                        <div class="form-group">
+                            <label for="id_fournisseur">Fournisseur:</label>
+                            {{ form.fournisseur }}
+                        </div>
+                        <div class="form-group">
+                            <label for="id_libellé">Libellé:</label>
+                            {{ form.libellé }}
+                        </div>
+                        <div class="form-group">
+                            <label for="id_description">Description:</label>
+                            {{ form.description}}
+                        </div>
+                        <div class="form-group">
+                        <label for="id_prix">Prix:</label>
+                        {{ form.prix }}
+                        </div>
+                        <div class="form-group">
+                        <label for="id_type">Type:</label>
+                        {{ form.type }}
+                        </div>
+                        <div class="form-group">
+                        <label for="id_img">Image:</label>
+                        {{ form.img }}
+                        </div>
+                        <div class="form-group">
+                         
+                        </div>
+                        <div class="text-center">
+                        <button type="submit" style="background-color: rgb(211, 84, 0)">Enregistrer</button>
+                        </div>
+                        </form>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        
+                        </div>
+                        {% endblock %} 
+                        Cette vue est similaire à la vue add_product.html, à l'exception du titre "Modifier Produit" et de la pré-remplissage des champs avec les données du produit existant.

@@ -1,0 +1,50 @@
+{% extends 'magasin/base.html' %}
+
+{% block title %} Catalogue de produits {% endblock %}
+{% block styles %}
+<style>
+    body{
+        background-color:#F0B27A;
+    }
+    button[type="submit"] {
+        background-color: rgb(211, 84, 0);
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+</style>
+{% endblock %}
+{% block content %}
+<!-- body -->
+<form encrypte methode='POST' class="post-form">
+<div class="container-fluid mt-3">
+    <div class="row justify-content-center">
+        <!-- all products -->
+        <div id='products' class="col-lg-9 mx-auto">
+            <div class="row mx-auto">
+                {% for product in products %}
+                <div id={{product.id}} class="col-lg-4 mb-4">
+                    <div class="card">
+                        <img src="{{product.img}}" class="card-img-top" style="height: 150px; object-fit: contain;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{product.libellé}}</h5>
+                            <p class="card-text">{{product.description}}</p>
+                            <h6 class="card-subtitle mb-2 text-muted">{{product.prix}}</h6>
+                            <button type="submit" >
+                            <a href="{% url 'update_produit' product.id %}"style="color:black" >Modifier</a></button>
+
+                            <button type="submit" >
+                            <a href="{% url 'delete_produit' product.id %}"style="color:black" >Supprimer</a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+</form>
+{% endblock %}

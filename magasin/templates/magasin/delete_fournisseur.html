@@ -1,0 +1,18 @@
+{% extends 'magasin/base.html' %}
+{% block title %} Supprimer Fournisseur {% endblock %}
+{% block content %}
+<!-- body -->
+<div class="container-fluid mt-3">
+    <div class="row-9" >
+        <div class="col-lg-6 mx-auto" >
+            <h2>Supprimer le fournisseur "{{ fournisseur.nom }}" ?</h2>
+            <form method="POST">
+                {% csrf_token %}
+                <p>Êtes-vous sûr de vouloir supprimer le produit "{{ product.libellé }}"?</p>
+                <button type="submit" class="btn btn-danger">Supprimer</button>
+                <a href="{% url 'Catalogue' %}" class="btn btn-primary">Annuler</a>
+              </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
